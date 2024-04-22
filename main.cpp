@@ -1,6 +1,7 @@
 #include <iostream>
 #include <array>
 #include <vector>
+#include <deque>
 using namespace std;
 
 template <typename T>
@@ -42,7 +43,22 @@ vector<T> divideVector(vector<T> &vec){
         cout<<*it<<" ";
         ++it;
     }
+    cout<<endl;
     return finalVec;
+}
+
+template <typename T>
+bool isPalyndrom(deque<T>& deq){
+    auto itStart = deq.begin();
+    auto itEnd = deq.end();
+    while (itStart < itEnd){
+        if(*itStart != *(itEnd - 1)){
+            return false;
+        }
+        itStart++;
+        itEnd--;
+    }
+    return true;
 }
 int main() {
 
@@ -56,7 +72,8 @@ int main() {
     vector<int> finalVec = divideVector(myVec);
 
 // Task 3
-
+    deque<int> deq = {1,2,3,4,3,2,1};
+    cout<<"Deq is palyndrom: "<<(isPalyndrom(deq) ? "TRUE" : "FALSE")<<endl;
 
     return 0;
 }
